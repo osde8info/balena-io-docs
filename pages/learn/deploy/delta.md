@@ -18,7 +18,7 @@ These binary deltas save on the amount of data needed to be downloaded, reduce t
 
 __Note__: Delta updates are enabled by default for devices running {{ $names.os.lower }} >= 2.47.1.
 
-For any devices running {{ $names.os.lower }} >= 2.47.1, the delta update behavior is enabled by default. For devices running {{ $names.os.lower }} < 2.47.1, updating to >= 2.47.1 via a [self-service update][self-service-update] will enable delta updates for the device. Alternitavely, the delta update behavior may be enabled or disabled application-wide or per-device with the `RESIN_SUPERVISOR_DELTA` configuration variable.
+For any devices running {{ $names.os.lower }} >= 2.47.1, the delta update behavior is enabled by default. For devices running {{ $names.os.lower }} < 2.47.1, updating to >= 2.47.1 via a [self-service update][self-service-update] will enable delta updates for the device. Alternatively, the delta update behavior may be enabled or disabled application-wide or per-device with the `RESIN_SUPERVISOR_DELTA` configuration variable.
 
 ![Setting the fleet configuration to enable delta behavior](/img/runtime/ResinSupervisorDelta.png)
 
@@ -32,7 +32,7 @@ Similarly, you may disable the delta update behavior application-wide or per-dev
 
 If you are using delta updates, you might notice the following changes in {{ $names.company.lower }} behavior:
 
-The *Download progress* bar on the dashboard might show for only a short time, much shorter than in a normal application update. This is because, in the most common development patterns, there are usually very small changes between one version of the application image and the next (e.g. fixing typos, adding a new source file, or installing an extra OS package), and when using deltas, these changes are downloaded much quicker than before.
+The *Download progress* bar on the dashboard might show for only a short time, much shorter than in a normal application update. In the most common development patterns, there are usually very small changes between one version of the application image and the next (e.g. fixing typos, adding a new source file, or installing an extra OS package), so when using deltas these changes are downloaded much quicker than before.
 
 Delta updates are resumable, so if the connection drops or otherwise stalls, the update will resume from the last byte received. Updates will be retried 30 times, with an interval of 1 second between retries. In addition, there is a wait time of 30 seconds during updates before a connection is considered stalled. This allows for a 20-minute timeframe where no byte is received before the update fails, after which the supervisor retries the delta from the beginning.
 
